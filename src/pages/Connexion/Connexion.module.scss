@@ -1,0 +1,311 @@
+.connexion {
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    margin-block: 5rem;
+    margin-inline: auto;
+    border-radius: .5rem;
+    overflow: hidden;
+    color: #fff;
+    background-color: var(--dark-blue);
+    transition: height ease-in .25s;
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        padding: 3rem 8rem 3rem 4rem;
+        border-radius: .5rem;
+        margin: auto;
+        gap: 2rem;
+        h3 {
+            font-size: 2.2rem;
+        }
+        p.errorMessage {
+            position: relative;
+            margin-top: -1rem;
+            margin-bottom: 0rem;
+            padding-left: 2rem;
+            margin-left: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            align-self: flex-start;
+            color: var(--error);
+        }
+
+        p.errorMessage::before {
+            content: '❌';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1rem;
+            height: 100%;
+        }
+
+        div {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            gap: .5rem;
+            input {
+                margin-top: 1rem;
+                padding: .4rem;
+                background-color: transparent;
+                color: white;
+                border: none;
+                font-size: 1.6rem;
+                outline: none;
+                border-bottom: 2px solid #fff;
+                z-index: 10;
+                
+            }
+            label {
+                position: absolute;
+                left: 5px;
+                bottom: .5rem;
+                z-index: 5;
+                transition: transform ease-in-out .25s;
+            }
+            
+            input:focus ~ label,
+            label.active {
+                transform: translateY(-100%);
+            }
+
+        }
+        span {
+            position: relative;
+            display: inline-flex;
+            align-self: flex-start;
+            gap: 1rem;
+            margin-left: 1rem;
+
+            label {
+                position: relative;
+                padding-left: 2rem;
+ 
+                & > i {
+                 display: block;
+                 opacity: 0;
+                 position: absolute;
+                 width: 1rem;
+                 height: 1rem;
+                 padding-left: 1px;
+                 left: 0;
+                 top: 50%;
+                 border-radius: 2px;
+                 transform: translateY(-50%) scale(0);
+                 font-size: 1rem;
+                 color: white;
+                 background-color: var(--light-blue);
+                 }
+             }
+            input[type='checkbox'] {
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: -8px ;
+                width: 1.5rem;
+                height: 1.8rem;
+                z-index: 20;
+
+                & + label::before {
+                    content: '';
+                    position: absolute;
+                    width: 1rem;
+                    aspect-ratio: 1 / 1;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    background-color: #fff;
+                    border-radius: 3px;
+                    margin-right: 0.3rem;
+                }
+
+                &:checked + label > i {
+                    display: block;
+                    opacity: 1;
+                    transform: translateY(-50%) scale(1)
+                }
+            }
+
+            
+        }
+        button {
+            align-self: flex-start;
+            background-color: transparent;
+            font-size: 1.4rem;
+            padding: .7rem 1.4rem;
+            margin-left: 1rem;
+            color: #fff;
+            border: solid 2px #fff;
+            transition: background-color ease-in .25s,
+                        border-color ease-in .25s;
+
+            &:hover {
+                background-color: var(--light-blue);
+                border-color: var(--light-blue) ;
+            }
+        }
+    }
+
+    .connexionForm div:last-of-type{
+        align-self: start;
+        margin-left: 1rem;
+        margin-top: -1rem;        
+    }
+    
+    &:not(.active) div:hover {
+        transform: translateX(0);
+        
+        span {
+            transform: translateX(.5rem);
+            opacity: .7;
+        }
+    }
+
+    & > div {
+        position: absolute;
+        width: 90%;
+        height: 100%;
+        top: 0;
+        left: 90%;
+        background-color: var(--primary);
+        transform: translateX(1rem);
+        transition: transform ease-in .2s;
+        z-index: 20;
+        p.errorMessage {
+            color: black;
+            margin-left: 4rem;
+        }
+        & > .buttonReveal {
+            display: flex;
+            gap: .5rem;
+            position: absolute;
+            top: 0;
+            left: 0rem;
+            width: 3.5rem;
+            height: 100%;
+            padding-top: 2rem;
+            padding-left: .7rem;
+            z-index: 100;
+        }
+        & span {
+            display: block;
+            width: 3px;
+            height: 3rem;
+            border-radius: 2rem;
+            background-color: #fff;
+            transition: transform ease-in .2s,
+                        opacity ease-in .2s;
+            &:last-of-type {
+                left: 1rem;
+            }
+        }
+
+       
+        
+        form {
+            display: flex;
+            opacity: 0;
+            position: relative;
+            align-items: center;
+            padding: 3rem 1rem;
+            background: transparent;
+            
+            & > div {
+                margin-left: -2rem;
+            }
+            .cross {
+                transition: transform ease-in .25s,
+                            color ease-in .25s;
+                &:hover {
+                    color: var(--dark-blue);
+                    transform: scale(1.15);
+                }
+            }
+            
+            button {
+                margin-left: 3rem;
+            }
+
+            i {
+                position: absolute;
+                font-size: 3rem;
+                top: 2rem;
+                right: 2rem;
+            }
+        }
+        
+    }
+}
+
+form .formInfo  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    gap: .2rem;
+    button.notRegister {
+        text-decoration: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-family: var(--font-family);
+        font-weight: 300;
+        font-size: 1.3rem;
+        &:hover {
+            text-decoration: underline;
+            background-color: transparent;
+        }
+    }
+    a {
+        position: relative;
+        font-size: 1.3rem;
+        font-weight: 300;
+        color: white;
+    }
+}
+
+div.active {
+    height: 40rem;
+    & > div {
+        transform: translateX(-88%);
+        form {
+            opacity: 1;
+        }
+        & > div {
+            display: none;
+        }
+        span {
+            display: none;
+            opacity: 0;
+        }
+    }
+}
+
+.acceptCondition {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        text-align: center;
+        width: 80%;
+        font-size: 1rem;
+        color: white;
+        padding-inline: 1rem;
+        margin: 0;
+    }
+
+    a {
+        text-decoration: underline;
+        color: white;
+
+        &::before {
+            display: none;
+        }
+    }
+}
