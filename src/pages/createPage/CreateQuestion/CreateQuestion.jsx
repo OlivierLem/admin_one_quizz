@@ -3,26 +3,45 @@ import { useContext, useRef, useState } from "react"
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
-import { addQuestion } from '../../../apis/question';
+import { addQuestion, editQuestion } from '../../../apis/question';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 
-export function CreateQuestion () {
-
+export function CreateQuestion ({question}) {
+    
+    console.log(question);
     const [step, setStep] = useState(1)
     const [showQuestion, setShowQuestion] = useState(false)
     const formRef = useRef();
     const navigate = useNavigate()
 
     const defaultValues = {
-        type: 'qcm',
-        theme: 'histoire',
-        times: '25',
-        status: 'privé',
-        question: '',
-        responses: []
+        type: `${question?.questionType ?? 'qcm'}`,
+        theme: `${question?.theme.name ?? 'histoire'}`,
+        times: `${question?.times ?? '25'}`,
+        status: `${question?.status ?? 'privé'}`,
+        question: `${question?.question ?? ''}`,
+        responses: [
+            {
+                name: question?.responses[0]?.name ?? '',
+                isValid: question?.responses[0]?.isValid ?? false
+            },
+            {
+                name: question?.responses[1]?.name ?? '',
+                isValid: question?.responses[1]?.isValid ?? false
+            },
+            {
+                name: question?.responses[2]?.name ?? '',
+                isValid: question?.responses[2]?.isValid ?? false
+            },
+            {
+                name: question?.responses[3]?.name ?? '',
+                isValid: question?.responses[3]?.isValid ?? false
+            },
+            
+        ]
     }
-
+    
     // * lessThan valeur + 1 * //
 
     // ! message d'erreur reponses à afficher
@@ -64,16 +83,26 @@ export function CreateQuestion () {
     }
 
     const submit = handleSubmit (async (values) => {
+        
+            try {
+                clearErrors();
+                if(question === undefined) {
+                    await addQuestion(values)
+                } else {
+                    console.log('attente edit question');
+                    await editQuestion({
+                        id: question._id,
+                        ...values
+                    })
+                }
+                navigate('/')
+    
+            } catch (message) {
+                console.error(message)
+                setError('generic', {type: "generic", message})
+            }
         console.log(values);
-        try {
-            clearErrors();
-            await addQuestion(values)
-            navigate('/')
-
-        } catch (message) {
-            console.error(message)
-            setError('generic', {type: "generic", message})
-        }
+        
     })
     let nResponses
     const renderQuestion = (nQuestion) => {
@@ -94,8 +123,8 @@ export function CreateQuestion () {
 
     return (
         <>
-        <div className='createContainer'>
-            <h1>Créer une question</h1>
+        <div className={`createContainer ${question !== undefined ? 'modaleForm' : ''} `}>
+            <h1>{question !== undefined ? 'Éditer' : 'Créer'} une question</h1>
             
             <div className={'stepCreate'}>
                 <div className={'active'}>

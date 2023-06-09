@@ -3,7 +3,7 @@ import { getQuestion } from "../../apis/question"
 import { Navigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext";
 import { Question } from "./component/Question";
-
+import './QuestionPage.scss'
 
 export function QuestionPage () {
 
@@ -17,8 +17,8 @@ export function QuestionPage () {
     }, []);
 
     return (
-        <>
-                <h1>Listes Questions</h1>
+        <section className="questionPage">
+                <h2>Listes Questions</h2>
                 {
                     question.length > 0 ? 
                         question.map(q => (
@@ -29,6 +29,6 @@ export function QuestionPage () {
                             <p className="notQuestion">Vous n'avez pas encore créer de question</p>
                         )
                 }
-            </>
+        </section>
     )       
 }

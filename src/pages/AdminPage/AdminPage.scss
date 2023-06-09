@@ -1,0 +1,25 @@
+.headerAdmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: white;
+    background-color: var(--dark-blue);
+}
+
+.headerAdmin nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.headerAdmin nav a {
+    font-size: 1.2rem;
+    color: white;
+}

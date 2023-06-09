@@ -1,0 +1,117 @@
+.questionPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:100%;
+}
+
+.cardQuestion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    padding: 1rem 2rem;
+    max-width: 600px;
+    margin: 4rem auto;
+    border-radius: .5rem;
+    font-weight: 500;
+    background-color: var(--background-blue);
+    color: var(--text-blue);
+    outline: solid 2px var(--dark-blue);
+    outline-offset: 10px;
+}
+
+.infoQuestion {
+    width: 100%;
+}
+.infoQuestion > div {
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    margin-top: -.5rem;
+    margin-bottom: 1rem;
+    gap: 2rem;
+}
+
+.cardButtons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.cardButtons button{
+    padding-block: .5rem;
+    width: 50%;
+    color: white;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 1rem;
+    transition: background-color ease-in .25s;
+    &:hover {
+        background-color: var(--dark-primary);
+    }
+    i {
+        margin-right: .5rem;
+        transition: transform ease-in .25s;
+    }
+    &:last-of-type {
+        background-color: var(--error);
+
+        &:hover {
+            background-color: hsl(6, 78%, 48%);
+        }
+    }
+
+    &.annuler:hover i {
+        transform: translateX(-.5rem);
+    }
+}
+
+.modaleDelete {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    padding: 1rem 2rem;
+    max-width: 500px;
+    margin: 4rem auto;
+    border-radius: .5rem;
+    font-weight: 500;
+    text-align: center;
+    background-color: var(--dark-blue);
+    color: white;
+    z-index: 100;
+    transform:  translate(-50%, -50%) scale(1.2);
+}
+
+.fondEditQuestion {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #d6d6d6ac;
+    z-index: 300;
+    & > button {
+        position: absolute;
+        top: 50%;
+        right: 2.5rem;
+        width: 2.5rem;
+        font-size: 1.5rem;
+        aspect-ratio: 1 / 1;
+        color: white;
+        background-color: var(--dark-blue);
+        border: none;
+        border-radius: 50%;
+        z-index: 600;
+        transition: background-color ease-in .25s;
+        &:hover {
+            background-color: var(--dark-primary);
+        }
+    }
+}

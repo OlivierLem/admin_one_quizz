@@ -1,13 +1,17 @@
 import { NavLink, Outlet } from "react-router-dom";
+import './AdminPage.scss'
 
 export function AdminPage () {
     return (
         <section>
-            <h1>Admin</h1>
-            <nav>
-                <NavLink to='/admin'>Home</NavLink>
-                <NavLink to='/admin/question'>Question</NavLink>
-            </nav>
+            <div className="headerAdmin">
+                <h1>Admin</h1>
+                <nav>
+                    <NavLink to='/admin/question'>Question</NavLink>
+                    <NavLink to='/admin/analitics'>Analitics</NavLink>
+                </nav>
+            </div>
+            
             <Outlet />
         </section>
     )

@@ -18,6 +18,7 @@ export default function Header () {
             <NavLink to='/'>Logo</NavLink>
             {user ? (
                 <div>
+                            <NavLink to='/admin/question'><i className={"fa-solid fa-user-tie"}></i>Admin</NavLink>
                     <div className={`${styles.createButton}`}>
                             <button>Créer <i className={"fa-solid fa-chevron-down"}></i></button>
                             <span className={`${styles.active}`}>

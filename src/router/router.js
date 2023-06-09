@@ -12,7 +12,7 @@ import { userLoader } from '../loaders/userLoader'
 import { CreateQuestion } from "../pages/createPage/CreateQuestion/CreateQuestion";
 import { QuestionPage } from "../pages/QuestionPage/QuestionPage";
 import { AdminPage } from "../pages/AdminPage/AdminPage";
-import AdminHome from "../pages/AdminPage/component/adminHome";
+import AnaliticsPage from "../pages/AdminPage/AnaliticsPage";
 
 const qcmData = [{
     question: "Quelle est la langue utilisé ?",
@@ -101,12 +101,12 @@ export const router = createBrowserRouter([
                 ), 
                 children: [
                   {
-                    index: true,
-                    element: <AdminHome />
-                  },
-                  {
                     path: '/admin/question',
                     element: <QuestionPage />
+                  },
+                  {
+                    path: '/admin/analitics',
+                    element: <AnaliticsPage />
                   }
                 ]
             },

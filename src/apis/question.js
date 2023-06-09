@@ -18,13 +18,24 @@ export async function getQuestion() {
     return response.json();
 }
 
-export async function deleteQuestion(evenement) {
+export async function deleteQuestion(question) {
     const response = await fetch (`${API_QUESTIONS}`, {
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(evenement)
+        body: JSON.stringify(question)
+    })
+    return response.json()
+}
+
+export async function editQuestion(question) {
+    const response = await fetch(`${API_QUESTIONS}/editQuestion`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(question)
     })
     return response.json()
 }

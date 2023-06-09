@@ -1,6 +1,5 @@
 import { Suspense, useState } from "react";
 import styles from "./App.module.scss";
-import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import { Outlet, useLoaderData } from "react-router-dom";
 import AuthProvider from "./components/AuthProvider/AuthProvider";
@@ -20,7 +19,6 @@ function App() {
         <Suspense>
           <Outlet />
         </Suspense>
-        <Footer />
       </AuthProvider>
     </div>
   );
