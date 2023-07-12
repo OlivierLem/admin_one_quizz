@@ -87,15 +87,17 @@ export function CreateQuestion ({question}) {
             try {
                 clearErrors();
                 if(question === undefined) {
+                    navigate('/')
                     await addQuestion(values)
+
                 } else {
                     console.log('attente edit question');
+                    navigate('/admin/')
                     await editQuestion({
                         id: question._id,
                         ...values
                     })
                 }
-                navigate('/')
     
             } catch (message) {
                 console.error(message)

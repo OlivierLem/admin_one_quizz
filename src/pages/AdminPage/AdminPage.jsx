@@ -8,6 +8,9 @@ export function AdminPage () {
                 <h1>Admin</h1>
                 <nav>
                     <NavLink to='/admin/question'>Question</NavLink>
+                    {/* <NavLink to='/admin/question'>Quizz</NavLink>
+                    <NavLink to='/admin/question'>Cours</NavLink>
+                    <NavLink to='/admin/question'>Thémes</NavLink> */}
                     <NavLink to='/admin/analitics'>Analitics</NavLink>
                 </nav>
             </div>
